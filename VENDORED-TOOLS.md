@@ -6,7 +6,7 @@ We vendor third-party software since
 
 A given tool _should_ be replaceable by its original version if
 - It has no custom patch listed
-- It has ONLY the "Work within the SQM directory structure" patch listed
+- It has ONLY the "Work within the SQM directory structure" or "Compiled static binary" patchs listed
 
 In order to control which software is called by SqueezeMeta, modify the "External software" section of the `SqueezeMeta/scripts/SqueezeMeta_conf.pl`
 
@@ -44,6 +44,7 @@ SqueezeMeta redistributes the following third-party software:
   - Work within the SQM directory structure
   - Add `-markerpath` as an additional command line argument
 * [MetaBAT](https://bitbucket.org/berkeleylab/metabat)
+  - Compiled static binary from commit a101cde671778135ea47ff1736006e428dd467f4
 * [DAS tool](https://github.com/cmks/DAS_Tool)
   - Add extra logging, remove some superfluous error messages
   - Explicitly load `library(methods)` in DAS_Tool.R since Rscript does not load it on startup (even if R console does)

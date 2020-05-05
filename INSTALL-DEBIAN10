@@ -1,0 +1,55 @@
+### Install Ruby.
+sudo apt install ruby
+
+
+### Install R 3.2.3 or higher.
+sudo apt install r-base
+
+
+### System libraries.
+sudo apt install git sqlite3 libxml2-dev libcurl4-openssl-dev libssl-dev
+
+
+### Perl modules.
+sudo apt install libclass-dbi-mysql-perl libxml-libxml-perl libdbd-sqlite3-perl
+sudo cpan Linux::MemInfo
+
+
+
+### Python modules.
+sudo apt install python3-pip python3-dev python3-scipy python3-matplotlib python3-numpy python3-pandas
+sudo -H python3 -m pip install future cython 
+sudo -H python3 -m pip install dendropy pysam
+
+
+### Download SqueezeMeta.
+# You can download the latest release of SqueezeMeta from https://github.com/jtamames/SqueezeM/releases/latest
+# Alternatively you can clone the github repository.
+#     git clone http://github.com/jtamames/SqueezeMeta
+
+
+### Install R packages.
+sudo R
+install.packages("doMC")
+install.packages("ggplot2")
+install.packages("data.table")
+install.packages("reshape2")
+install.packages("BiocManager")
+BiocManager::install("pathview")
+quit(save="no")
+sudo R CMD INSTALL <installpath>/SqueezeMeta/bin/DAS_Tool/package/DASTool_1.1.1.tar.gz
+sudo R CMD INSTALL <installpath>/SqueezeMeta/lib/SQMtools
+
+
+### Install databases and test data.
+# This will occupy around 200Gb.
+<installpath>/SqueezeMeta/utils/install_utils/download_databases.pl <datapath>
+
+
+### Test that all the dependencies can be located in this environment.
+<installpath>/SqueezeMeta/utils/install_utils/test_install.pl
+
+
+### Run SqueezeMeta on test data.
+cd <datapath>/test
+perl <installpath>/SqueezeMeta/scripts/SqueezeMeta.pl -m merged -p Hadza -s test.samples -f raw/
