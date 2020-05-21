@@ -5,6 +5,7 @@ use Getopt::Long;
 use strict;
 use File::Basename;
 use Cwd 'abs_path';
+use lib ".";
 
 $|=1;
 
