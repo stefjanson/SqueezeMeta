@@ -231,7 +231,7 @@ if($mode=~/sequential/i) {
 
 	my @nmg=keys %allsamples;
 	$numsamples=$#nmg+1;
-	print "$numsamples metagenomes found: @nmg";
+	print BOLD "\n$numsamples samples found: @nmg"; print RESET;
 	print "\n\n";
 
 	open(outfile1,">$pwd/global_progress") or do { print RED; print "Can't write in directory $pwd\n"; print RESET; die; }; 	#-- An index indicating where are we and which parts of the method finished already. For the global process
@@ -485,7 +485,7 @@ else {
 
 	print "Reading configuration from $projectdir/SqueezeMeta_conf.pl\n";
 	do "$projectdir/SqueezeMeta_conf.pl" or do { print RED; print "Can't write in directory $projectdir. Wrong permissions, or out of space?\n"; print RESET; die; };
-	print("$mappingfile\n");
+	# print("$mappingfile\n");
 
 	open(outmet,">$methodsfile") || warn "Cannot open methods file $methodsfile for writing methods and references\n";
 	print outmet "Analysis done with SqueezeMeta v$version (Tamames & Puente-Sanchez 2019, Frontiers in Microbiology 9, 3349)\n";
@@ -544,8 +544,8 @@ sub moving {
 	my @nmg=keys %allsamples;
 	$numsamples=$#nmg+1;
 	print outfile3 "Samples:$numsamples\nMode:$mode\n0\n";
-	if($numsamples==1) { print "$numsamples sample found\n"; }
-	else { print "$numsamples samples found: @nmg\n\n"; }
+	if($numsamples==1) { print BOLD "\n$numsamples sample found\n"; print RESET; }
+	else { print BOLD "\n$numsamples samples found: @nmg\n\n"; print RESET; }
 
 	open(infile0,$equivfile) || die;	#-- Deleting \r in samples file for windows compatibility
 	open(outfile0,">$mappingfile") || die;  
